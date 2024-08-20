@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Numbe Game</title>
+    <link rel="stylesheet" href="game.css">
+    <Body background="/image/imae.jp.jpeg">
+</head>
+<body>    
+    <h1>Guess The Number Game</h1>
+    <p>Guess the random number between 1 and 10:</p>
+    <input type="text" id="guessInput">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="result"></p>
+    <div id="hearts">Hearts:
+        &#10084;&#10084;&#10084;&#10084;&#10084;
+</div>
+    <script>
+        let randomNumber = Math.floor(Math.random() * 10) + 1;
+        let hearts = 5;
+        
+
+        function checkGuess() {
+            let guess = parseInt(document.getElementById("guessInput").value);
+            
+         if (guess === randomNumber) {
+            alert("Correct answer! Hope you keep winning!")
+            randomNumber = Math.floor(Math.random() * 10) + 1;
+            
+            } else {
+                alert("Wrong answer! Better luck next time!")
+                hearts--;
+               updateHearts();
+            }
+        
+            if (hearts === 0) {
+                alert("Game Over!");
+                hearts = 5;
+                updateHearts();
+            }
+        
+            }
+
+            function updateHearts() {
+                let heartsDisplay = "";
+                for (let i = 0; i < hearts; i++) {
+                    heartsDisplay += "&#10084;";
+                
+                }
+                document.getElementById("hearts").innerHTML = "Hearts: " + heartsDisplay;
+            }
+            </script>
+</body>
+</html>
